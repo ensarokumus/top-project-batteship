@@ -1,18 +1,18 @@
-const sum = (a, b) => a + b;
-
-export default sum;
-
 class Ship {
-  constructor(length, hitCounter = 0) {
+  constructor(name, length) {
+    this.name = name;
     this.length = length;
-    this.hitCounter = hitCounter;
+    this.hitCounter = [];
   }
 
-  hit() {
-    this.hitCounter += 1;
+  hit(index) {
+    if (this.hitCounter.includes(index) || index < 0 || index >= this.length)
+      return this.hitCounter.push(index);
   }
 
   isSunk() {
     return this.length === this.hitCounter ? true : false;
   }
 }
+
+export default Ship;
